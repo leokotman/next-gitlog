@@ -1,6 +1,7 @@
 import { Octokit } from '@octokit/core';
+import { CommitResponse } from './types';
 
-export const fetchCommits = async () => {
+export const fetchCommits = async (): Promise<CommitResponse[]> => {
   const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
   octokit;
 

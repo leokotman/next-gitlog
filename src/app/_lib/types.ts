@@ -18,18 +18,19 @@ interface Author {
   type?: string;
   site_admin?: boolean;
 }
+
 interface Commit {
   url?: string;
   author?: {
     name?: string;
     email?: string;
     date?: string;
-  };
+  } | null;
   committer?: {
     name?: string;
     email?: string;
     date?: string;
-  };
+  } | null;
   message?: string;
   tree?: {
     url?: string;
@@ -43,6 +44,7 @@ interface Commit {
     payload?: string | null;
   };
 }
+
 export interface CommitResponse {
   url?: string;
   sha?: string;
@@ -50,8 +52,8 @@ export interface CommitResponse {
   html_url?: string;
   comments_url?: string;
   commit?: Commit;
-  author?: Author;
-  committer?: Author;
+  author?: Author | null;
+  committer?: Author | null;
   parents?: Array<{
     url?: string;
     sha?: string;

@@ -1,7 +1,7 @@
 import { fetchCommits } from './_lib/githubApi';
 import { CommitResponse } from './_lib/types';
 
-const useCommitsQuery = async () => {
+const useCommitsQuery = async (): Promise<CommitResponse[]> => {
   const commits = await fetchCommits();
   return commits ?? [];
 };
