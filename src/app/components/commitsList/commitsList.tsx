@@ -14,7 +14,9 @@ export const CommitsList = (props: CommitsListProps) => {
   const [commits, setCommits] = useState<CommitResponse[]>(initialCommits);
 
   const handleRefetchCommits = async () => {
-    const response = await fetch('/api/commits');
+    const response = await fetch(`/api/commits?cache-bust=${Date.now()}`, {
+      cache: 'no-store',
+    });
     if (response.ok) {
       const newCommits: CommitResponse[] = await response.json();
       setCommits(newCommits);
