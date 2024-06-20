@@ -2,6 +2,7 @@
 
 import { CommitResponse } from '@/app/_lib/types';
 import { useState } from 'react';
+import { Commit } from '../commit/commit';
 
 interface CommitsListProps {
   children: React.ReactNode;
@@ -21,18 +22,25 @@ export const CommitsList = (props: CommitsListProps) => {
       console.error('Failed to fetch commits');
     }
   };
+  const commitsNumberHeading =
+    commits.length === 1
+      ? `There is ${commits.length} commit`
+      : `There are ${commits.length} commits`;
 
   return (
-    <div>
-      <button onClick={handleRefetchCommits}>{children}</button>
-      <ul>
+    <section className="flex flex-col items-center gap-6 w-full overflow-y-scroll max-h-full">
+      <h2 className="text-xl">{commitsNumberHeading}</h2>
+      <button
+        className="bg-white rounded px-4 py-2"
+        onClick={handleRefetchCommits}
+      >
+        {children}
+      </button>
+      <ul className="flex flex-col gap-4 w-9/12">
         {commits.map((commit) => (
-          <li key={commit.sha}>
-            {commit.commit?.author?.name}, {commit.commit?.message},{' '}
-            {commit.commit?.author?.date}
-          </li>
+          <Commit commit={commit} key={commit.sha} />
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
