@@ -31,7 +31,7 @@ export const CommitsList = (props: CommitsListProps) => {
     <section className="flex flex-col items-center gap-6 w-full overflow-y-scroll max-h-full">
       <h2 className="text-xl">{commitsNumberHeading}</h2>
       <button
-        className="bg-white rounded px-4 py-2"
+        className="bg-blue-50 border border-blue-950 rounded px-4 py-2 transition ease-in-out duration-300 hover:bg-blue-900 hover:text-white hover:border-white"
         onClick={handleRefetchCommits}
       >
         {children}
