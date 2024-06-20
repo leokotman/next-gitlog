@@ -1,3 +1,5 @@
+import { formatDistance } from 'date-fns';
+
 import { CommitResponse } from '@/app/_lib/types';
 
 interface CommitProps {
@@ -9,7 +11,8 @@ export const Commit = (props: CommitProps) => {
   const commitTime = commit.commit?.author?.date
     ? new Date(commit.commit?.author?.date).toUTCString()
     : '';
-  console.log('commitTime', commitTime);
+  const currentTime = new Date();
+  const diffInDates = formatDistance(currentTime, commitTime);
 
   return (
     <li className="bg-blue-100 rounded p-3">
@@ -18,6 +21,7 @@ export const Commit = (props: CommitProps) => {
         <span>by {commit.commit?.author?.name}</span>
         <span>{commitTime}</span>
       </p>
+      <p className="text-end text-sm">{diffInDates} ago</p>
     </li>
   );
 };
