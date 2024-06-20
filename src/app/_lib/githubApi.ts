@@ -7,13 +7,16 @@ export const fetchCommits = async (): Promise<CommitResponse[]> => {
 
   const owner = 'leokotman';
   const repo = 'next-gitlog';
-  const perPage = 5;
+  const perPage = 20;
 
   const fiveMostRecentCommits = await octokit
     .request('GET /repos/{owner}/{repo}/commits', {
       owner,
       repo,
       per_page: perPage,
+      headers: {
+        'cache-control': 'no-cache',
+      },
     })
     .then((res) => res.data);
   return fiveMostRecentCommits;
