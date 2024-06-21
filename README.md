@@ -1,3 +1,11 @@
+Project URL: https://next-gitlog.vercel.app/
+
+What can be improved:
+
+1) Caching functionality
+2) Loading progress (UI/UX improvements)
+3) Styling (beautify)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
